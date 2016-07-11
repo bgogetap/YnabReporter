@@ -6,7 +6,7 @@ When YNAB relaunched with their web-based product, it didn't include many featur
 
 One of the big features that was lost (for now) were Reports.
 
-Right now, this program will print your networth from month to month. New, more detailed reports will be added later.
+Right now, this program will print your net worth from month to month. New, more detailed reports will be added later.
 
 ###Usage
 Export your data from YNAB (Go to My Budget->Export Data). This will give you a .zip file with two CSV files.
