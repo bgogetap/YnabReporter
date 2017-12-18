@@ -1,21 +1,24 @@
+## Now Redundant
+YNAB on the web now supports reports. This project is just kept as a sample project.
+
 ## YnabReporter
 Report generation for web YNAB users
 
-###Why?
+### Why?
 When YNAB relaunched with their web-based product, it didn't include many features that the desktop version had.
 
 One of the big features that was lost (for now) were Reports.
 
 Right now, this program will print your net worth from month to month. New, more detailed reports will be added later.
 
-###Usage
+### Usage
 Export your data from YNAB (Go to My Budget->Export Data). This will give you a .zip file with two CSV files.
 
 Extract the CSV files.
 
 Build this program, and run it supplying the filenames of the CSV files as arguments (budget first, then register)
 
-###Example
-`go build`
+### Example
+`go build` / `go install`
 
-`./YnabReporter ~/budget.csv ~/register.csv`
+`./YnabReporter ~/budget.csv ~/register.csv` / `YnabReporter budget.csv register.csv`
