@@ -1,15 +1,15 @@
 package report
 
 import (
-	"os"
 	"bufio"
-	"strings"
+	"os"
 	"strconv"
+	"strings"
 )
 
 type Month struct {
-	month string
-	year string
+	month    string
+	year     string
 	networth int64
 }
 
@@ -21,7 +21,7 @@ func newMonth(line string) Month {
 
 func getExistingMonth(monthList []Month, monthString string, yearString string) *Month {
 	for index, month := range monthList {
-		if (month.month == monthString && month.year == yearString) {
+		if month.month == monthString && month.year == yearString {
 			return &monthList[index]
 		}
 	}
@@ -57,12 +57,12 @@ func ParseMonth(registerFile *os.File) {
 	scanner := bufio.NewScanner(registerFile)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if (strings.Contains(line, "Account")) {
+		if strings.Contains(line, "Account") {
 			continue
 		}
 		m, y := getDate(line)
 		matchedMonth := getExistingMonth(monthList, m, y)
-		if (matchedMonth.month == "") {
+		if matchedMonth.month == "" {
 			monthList = append(monthList, newMonth(line))
 		} else {
 			addToMonth(matchedMonth, getAmount(line))
@@ -75,8 +75,8 @@ func ParseMonth(registerFile *os.File) {
 		print(" : $")
 		networth += month.networth
 		networthString := strconv.FormatInt(networth, 10)
-		firstPart := networthString[:len(networthString) - 2]
-		secondPart := networthString[len(networthString) - 2:]
+		firstPart := networthString[:len(networthString)-2]
+		secondPart := networthString[len(networthString)-2:]
 		newString := firstPart + "." + secondPart
 		print(newString)
 		println()

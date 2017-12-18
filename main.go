@@ -1,15 +1,15 @@
 package main
 
 import (
-	"os"
 	"bufio"
-	"strings"
+	"github.com/bgogetap/YnabReporter/report"
+	"os"
 	"strconv"
-	"ynab_reporter/report"
+	"strings"
 )
 
 type Category struct {
-	name string
+	name  string
 	spent float64
 }
 
@@ -31,8 +31,8 @@ func addToCategory(category *Category, amount float64) {
 }
 
 func containsCategory(categoryList []Category, newCategory Category) *Category {
-	for index,item := range categoryList {
-		if (item.name == newCategory.name) {
+	for index, item := range categoryList {
+		if item.name == newCategory.name {
 			return &categoryList[index]
 		}
 	}
@@ -45,7 +45,7 @@ func parseBudget(budgetFile *os.File) {
 	for scanner.Scan() {
 		extractedCategory := newCategory(scanner.Text())
 		matchedCategory := containsCategory(categoryList, extractedCategory)
-		if (matchedCategory.name != "") {
+		if matchedCategory.name != "" {
 			addToCategory(matchedCategory, extractedCategory.spent)
 		} else {
 			categoryList = append(categoryList, extractedCategory)
